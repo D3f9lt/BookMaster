@@ -14,11 +14,18 @@ namespace BookMaster.Model
     
     public partial class Book
     {
+        public Book()
+        {
+            this.BookAuthor = new HashSet<BookAuthor>();
+        }
+    
         public int Id { get; set; }
         public string Title { get; set; }
         public string Subtitle { get; set; }
         public System.DateTime FirstPublishDate { get; set; }
         public string Description { get; set; }
         public string Cover { get; set; }
+    
+        public virtual ICollection<BookAuthor> BookAuthor { get; set; }
     }
 }

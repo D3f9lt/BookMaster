@@ -22,6 +22,9 @@ namespace BookMaster.View.Windows
         public BrowseCatalogWindow()
         {
             InitializeComponent();
+
+            // Загружаем данные из БД в ListView
+            BookAuthorsLv.ItemsSource = App.context.BookAuthor.ToList();
         }
     }
 }

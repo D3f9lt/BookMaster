@@ -4,10 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="da1f8aebaf3b4ada8d4125ffa3f91053" Name="Diagram1">
-        <EntityTypeShape EntityType="Ivanushkin.Denis.BookmasterModel.Author" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ivanushkin.Denis.BookmasterModel.Book" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ivanushkin.Denis.BookmasterModel.BookAuthor" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+      <Diagram DiagramId="98cded3204234b1fb193ba9b9b756e71" Name="Diagram1">
+        <EntityTypeShape EntityType="Ivanushkin.Denis.BookmasterModel.Author" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ivanushkin.Denis.BookmasterModel.Book" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ivanushkin.Denis.BookmasterModel.BookAuthor" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="Ivanushkin.Denis.BookmasterModel.FK_BookAuthor_Author" ManuallyRouted="false" />
+        <AssociationConnector Association="Ivanushkin.Denis.BookmasterModel.FK_BookAuthor_Book" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

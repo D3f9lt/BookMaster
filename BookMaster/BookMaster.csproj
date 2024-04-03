@@ -157,19 +157,20 @@
     <Resource Include="Resources\Icons\search.png" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model\BookMasterModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BookMasterModel.Context.cs</LastGenOutput>
       <DependentUpon>BookMasterModel.edmx</DependentUpon>
+      <LastGenOutput>BookMasterModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Model\BookMasterModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BookMasterModel.edmx</DependentUpon>
       <LastGenOutput>BookMasterModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Resource Include="Resources\Images\booklogo.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
