@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookMaster.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,14 @@ namespace BookMaster.View.Windows
 
             // Загружаем данные из БД в ListView
             BookAuthorsLv.ItemsSource = App.context.BookAuthor.ToList();
+            CountOfBooksTbl.DataContext = App.context.Book.ToList();
+        }
+
+        // Отслеживаем изменение выюора в ListView
+        private void BookAuthorsLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Загружаем в контекст днных Grid'а с выбранный элемент из ListView (для реализации привязки элемента)
+            BookDetailsGrid.DataContext = BookAuthorsLv.SelectedItem as BookAuthor;
         }
     }
 }

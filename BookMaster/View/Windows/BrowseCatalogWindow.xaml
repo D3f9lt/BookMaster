@@ -84,7 +84,8 @@
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
-            <ListView Name="BookAuthorsLv">
+            <ListView Name="BookAuthorsLv"
+                      SelectionChanged="BookAuthorsLv_SelectionChanged">
                 <!-- Переводим ListView в табличный вид -->
                 <ListView.View>
                     <GridView>
@@ -123,12 +124,12 @@
 
                 <TextBlock Grid.Column="8" Text="of 4"/>
 
-                <TextBlock Grid.Column="10" Text="153 Books found"/>
+                <TextBlock Name="CountOfBooksTbl" Grid.Column="10" Text="{Binding Count, StringFormat={}{0} books found}"/>
             </Grid>
         </Grid>
 
         <!-- Информация о книге -->
-        <Grid Grid.Row="3" 
+        <Grid Grid.Row="3" Name="BookDetailsGrid" 
               Grid.Column="1" Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
@@ -148,24 +149,24 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="Boaty McBoatface" FontSize="30"/>
+                <TextBlock Text="{Binding Book.Title}" FontSize="30"/>
 
                 <TextBlock Grid.Row="2"> 
                     <Hyperlink> 
-                        by Byron Barton 
+                        <TextBlock Text="{Binding Author.Fullname}"/> 
                     </Hyperlink>
                 </TextBlock>
 
-                <TextBlock Grid.Row="4" Text="first published: 2020"/>
+                <TextBlock Grid.Row="4" Text="{Binding Book.FirstPublishDate.Year, StringFormat = First published: {0}}"/>
 
                 <TextBlock Grid.Row="6" Text="Description"/>
 
-                <TextBlock Grid.Row="8" Text="Описание книги"/>
+                <TextBlock Grid.Row="8" Text="{Binding Book.Description}"/>
 
             </Grid>
             
             <Image Grid.Column="1"
-                   Source="\Resources\Images\booklogo.jpg"/>
+                   Source="{Binding Book.Cover}"/>
         </Grid>
     </Grid>
 </Window>

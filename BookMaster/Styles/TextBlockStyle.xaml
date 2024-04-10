@@ -5,5 +5,6 @@
         <Setter Property="FontSize" Value="30"/>
         <Setter Property="FontFamily" Value="Tahoma"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
 </ResourceDictionary>
