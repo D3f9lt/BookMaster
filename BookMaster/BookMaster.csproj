@@ -93,6 +93,18 @@
     <Compile Include="View\Windows\BrowseCatalogWindow.xaml.cs">
       <DependentUpon>BrowseCatalogWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\CirculationWindow.xaml.cs">
+      <DependentUpon>CirculationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\ManageCustomersWindow.xaml.cs">
+      <DependentUpon>ManageCustomersWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\ReportsWindow.xaml.cs">
+      <DependentUpon>ReportsWindow.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -146,6 +158,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\BrowseCatalogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\CirculationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\ManageCustomersWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\ReportsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

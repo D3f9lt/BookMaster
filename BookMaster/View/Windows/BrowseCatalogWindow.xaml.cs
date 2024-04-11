@@ -27,13 +27,61 @@ namespace BookMaster.View.Windows
             // Загружаем данные из БД в ListView
             BookAuthorsLv.ItemsSource = App.context.BookAuthor.ToList();
             CountOfBooksTbl.DataContext = App.context.Book.ToList();
+
+            // Выбираем элемент из списка по его индексу
+            BookAuthorsLv.SelectedIndex = 0;
+
+            // Прячем элементы меню
+            LogoutMi.Visibility = Visibility.Collapsed;
+            LibraryMi.Visibility = Visibility.Collapsed;
         }
 
-        // Отслеживаем изменение выюора в ListView
+        // Отслеживаем изменение выбора в ListView
         private void BookAuthorsLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Загружаем в контекст днных Grid'а с выбранный элемент из ListView (для реализации привязки элемента)
             BookDetailsGrid.DataContext = BookAuthorsLv.SelectedItem as BookAuthor;
+        }
+
+        private void Login_Click(object sender, RoutedEventArgs e)
+        {
+            // Открывем окно в режиме диалогового
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.ShowDialog();
+        }
+
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CloseMi_Click(object sender, RoutedEventArgs e)
+        {
+            // Закрываем текущее окно
+            Close();
+        }
+
+        private void ManCustomersMi_Click(object sender, RoutedEventArgs e)
+        {
+            ManageCustomers manageCustomers = new ManageCustomers();
+            manageCustomers.Show();
+        }
+
+        private void CirculationMi_Click(object sender, RoutedEventArgs e)
+        {
+            CirculationWindow circulationWindow = new CirculationWindow();
+            circulationWindow.Show();
+        }
+
+        private void ReportsMi_Click(object sender, RoutedEventArgs e)
+        {
+            ReportsWindow reportsWindow = new ReportsWindow();
+            reportsWindow.Show();
+        }
+
+        private void SearchBTN_Click(object sender, RoutedEventArgs e)
+        {
+            BookAuthorsLv.ItemsSource = App.context.BookAuthor.Where(ba => ba.Book.Title.Contains(TitleTb.Text)).ToList();
         }
     }
 }
