@@ -48,11 +48,17 @@ namespace BookMaster.View.Windows
             // Открывем окно в режиме диалогового
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.ShowDialog();
+
+            LoginMi.Visibility = Visibility.Collapsed;
+            LoginMi.Visibility = Visibility.Visible;
+            LibraryMi.Visibility = Visibility.Visible;
         }
 
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
-
+            LoginMi.Visibility = Visibility.Visible;
+            LoginMi.Visibility = Visibility.Collapsed;
+            LibraryMi.Visibility = Visibility.Collapsed;
         }
 
         private void CloseMi_Click(object sender, RoutedEventArgs e)
@@ -81,7 +87,13 @@ namespace BookMaster.View.Windows
 
         private void SearchBTN_Click(object sender, RoutedEventArgs e)
         {
-            BookAuthorsLv.ItemsSource = App.context.BookAuthor.Where(ba => ba.Book.Title.Contains(TitleTb.Text)).ToList();
+            BookAuthorsLv.ItemsSource = App.context.BookAuthor.Where(ba => ba.Book.Title.Contains(TitleTb.Text) && ba.Author.Lastname.Contains(AuthorTb.Text)).ToList();
+        }
+
+        private void AuthorsHl_Click(object sender, RoutedEventArgs e)
+        {
+            BookAuthorsDetailsWindow bookAuthorsDetailsWindow = new BookAuthorsDetailsWindow(BookAuthorsLv.SelectedItem as BookAuthor);
+            bookAuthorsDetailsWindow.ShowDialog();
         }
     }
 }

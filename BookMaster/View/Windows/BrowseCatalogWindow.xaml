@@ -68,7 +68,7 @@
                  Grid.Column="2"/>
 
 
-            <TextBox Grid.Row="4" 
+            <TextBox Name="AuthorTb" Grid.Row="4" 
                  Grid.Column="2"/>
 
 
@@ -93,8 +93,22 @@
                         <GridViewColumn Header="Title"
                                         DisplayMemberBinding="{Binding Book.Title}"/>
 
-                        <GridViewColumn Header="Authors"
-                                        DisplayMemberBinding="{Binding Author.Fullname}"/>
+                        <GridViewColumn Header="Authors">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <!-- Коллекция привязок-->
+                                            <MultiBinding StringFormat="{}{0} {1} {2}">
+                                                <Binding Path="Author.Lastname"/>
+                                                <Binding Path="Author.Firstname"/>
+                                                <Binding Path="Author.Middlename"/>
+                                            </MultiBinding>
+                                            </TextBlock.Text>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -156,8 +170,17 @@
                 <TextBlock Text="{Binding Book.Title}" FontSize="30"/>
 
                 <TextBlock Grid.Row="2"> 
-                    <Hyperlink> 
-                        <TextBlock Text="{Binding Author.Fullname}"/> 
+                    <Hyperlink Name="AuthorsHl" Click="AuthorsHl_Click"> 
+                       <TextBlock>
+                            <TextBlock.Text>
+                                <!-- Коллекция привязок-->
+                                <MultiBinding StringFormat="{}{0} {1} {2}">
+                                    <Binding Path="Author.Lastname"/>
+                                    <Binding Path="Author.Firstname"/>
+                                    <Binding Path="Author.Middlename"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                       </TextBlock>
                     </Hyperlink>
                 </TextBlock>
 
