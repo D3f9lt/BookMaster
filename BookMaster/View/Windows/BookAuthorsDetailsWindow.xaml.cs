@@ -23,16 +23,21 @@ namespace BookMaster.View.Windows
         public BookAuthorsDetailsWindow(BookAuthor bookAuthor)
         {
             InitializeComponent();
+
+            AuthorCmb.ItemsSource = App.context.BookAuthor.Where(ba => ba.BookId == bookAuthor.BookId).ToList();
+
+            DataContext = AuthorCmb.SelectedItem = bookAuthor;
         }
 
         private void AuthorCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            // В контекст данных окна передаем выбранный элемент из выпадающего списка. Сам элемент приводим к типу BookAuthor.
+            DataContext = AuthorCmb.SelectedItem as BookAuthor;
         }
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
     }
 }

@@ -25,11 +25,24 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <ComboBox  Name="AuthorCmb" SelectionChanged="AuthorCmb_SelectionChanged"/>
-
+        <ComboBox Name="AuthorCmb" SelectionChanged="AuthorCmb_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding>
+                                <Binding Path="Author.LastName"/>
+                                <Binding Path="Author.BirthDate"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        
         <TextBlock Grid.Row="2">
             <TextBlock.Text>
-                <MultiBinding StringFormat="{}{0} - {1}">
+                <MultiBinding StringFormat="{}{0: dd MMMM yyy} - {1:dd MMMM yyy}">
                     <Binding Path="Author.BirthDate"/>
                     <Binding Path="Author.DeathDate"/>
                 </MultiBinding>
@@ -41,7 +54,7 @@
         <TextBlock Grid.Row="6" Text="{Binding}"/>
                 
         <TextBlock Grid.Row="8">
-            <Hyperlink>
+            <Hyperlink NavigateUri="{Binding Author.Wikipedia}">
                 Перейти на Wikipedia
             </Hyperlink>
         </TextBlock>
