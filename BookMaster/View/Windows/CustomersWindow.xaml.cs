@@ -15,23 +15,13 @@ using System.Windows.Shapes;
 namespace BookMaster.View.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для LoginWindow.xaml
+    /// Логика взаимодействия для CustomersWindow.xaml
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class CustomersWindow : Window
     {
-        public LoginWindow()
+        public CustomersWindow()
         {
             InitializeComponent();
-        }
-
-        private void CancelBTN_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void LoginBTN_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

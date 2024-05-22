@@ -99,6 +99,9 @@
     <Compile Include="View\Windows\CirculationWindow.xaml.cs">
       <DependentUpon>CirculationWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\CustomersWindow.xaml.cs">
+      <DependentUpon>CustomersWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -169,6 +172,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\CirculationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\CustomersWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

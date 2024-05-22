@@ -5,8 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookMaster.View.Windows"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="450" Width="800">
+        Title="LoginWindow" Height="400" Width="600" 
+        SizeToContent="Height" 
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Grid Margin="70">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="1*" />
+
+            </Grid.ColumnDefinitions>
+
+            <Button Name="LoginBTN" Grid.Row="5" Grid.Column="2" 
+                    Margin="5" Content="Login" FontSize="2"
+                    Click="LoginBTN_Click"/>
+
+            <Button Name="CancelBTN" Grid.Row="5" Grid.Column="4" 
+                    Margin="5" Content="Cancel"
+                    Click="CancelBTN_Click"/>
+
+            <TextBlock Grid.Row="0" 
+                       Grid.Column="0" 
+                       FontSize="20" 
+                       Text="Usermaname">
+            </TextBlock>
+
+            <TextBlock Grid.Row="2" 
+                       Grid.Column="0" 
+                       FontSize="20" 
+                       Text="Password">
+            </TextBlock>
+
+            <TextBox Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" 
+                     Margin="10" BorderBrush="Black">
+            </TextBox>
+
+            <TextBox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" 
+                     Margin="10" BorderBrush="Black">
+            </TextBox>
+        </Grid>
     </Grid>
 </Window>
