@@ -26,8 +26,8 @@ namespace BookMaster.View.Windows
         {
             InitializeComponent();
 
-            AddBtn.Visibility = Visibility.Visible;
-            SaveBtn.Visibility = Visibility.Collapsed;
+            
+            
         }
 
         public AddEditCustomerWindow(Customer selectedCustomer)
@@ -36,8 +36,8 @@ namespace BookMaster.View.Windows
 
             DataContext = selectedCustomer;
 
-            AddBtn.Visibility = Visibility.Collapsed;
-            SaveBtn.Visibility = Visibility.Visible;
+            
+            
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)

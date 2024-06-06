@@ -48,13 +48,13 @@
                        Text="Password">
             </TextBlock>
 
-            <TextBox Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" 
+            <TextBox  Name="LoginTb" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" 
                      Margin="10" BorderBrush="Black">
             </TextBox>
 
-            <TextBox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" 
+            <PasswordBox Name="PasswordPb" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" 
                      Margin="10" BorderBrush="Black">
-            </TextBox>
+            </PasswordBox>
         </Grid>
     </Grid>
 </Window>

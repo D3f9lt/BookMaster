@@ -68,7 +68,6 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Content="Save" Name="SaveBtn" Click="SaveBtn_Click"/>
             <Button Content="Add" Name="AddBtn" Click="AddBtn_Click"/>
             <Button Grid.Column="2" Content="Cancel" Name="CancelBtn" Click="CancelBtn_Click"/>
         </Grid>

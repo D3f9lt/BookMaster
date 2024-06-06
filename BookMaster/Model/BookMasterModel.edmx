@@ -91,31 +91,45 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Ivanushkin.Denis.BookmasterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BookMasterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Author" EntityType="Ivanushkin.Denis.BookmasterModel.Author" />
+          <EntitySet Name="Book" EntityType="Ivanushkin.Denis.BookmasterModel.Book" />
+          <EntitySet Name="BookAuthor" EntityType="Ivanushkin.Denis.BookmasterModel.BookAuthor" />
+          <EntitySet Name="Customer" EntityType="Ivanushkin.Denis.BookmasterModel.Customer" />
+          <AssociationSet Name="FK_BookAuthor_Author" Association="Ivanushkin.Denis.BookmasterModel.FK_BookAuthor_Author">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="BookAuthor" EntitySet="BookAuthor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookAuthor_Book" Association="Ivanushkin.Denis.BookmasterModel.FK_BookAuthor_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="BookAuthor" EntitySet="BookAuthor" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Author">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Lastname" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Firstname" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lastname" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Firstname" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="Middlename" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="Bio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Bio" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DeathDate" Type="DateTime" Precision="0" />
           <Property Name="Wikipedia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="BookAuthor" Relationship="Self.FK_BookAuthor_Author" FromRole="Author" ToRole="BookAuthor" />
+          <NavigationProperty Name="BookAuthor" Relationship="Ivanushkin.Denis.BookmasterModel.FK_BookAuthor_Author" FromRole="Author" ToRole="BookAuthor" />
         </EntityType>
         <EntityType Name="Book">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Subtitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FirstPublishDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Cover" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="BookAuthor" Relationship="Self.FK_BookAuthor_Book" FromRole="Book" ToRole="BookAuthor" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Cover" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BookAuthor" Relationship="Ivanushkin.Denis.BookmasterModel.FK_BookAuthor_Book" FromRole="Book" ToRole="BookAuthor" />
         </EntityType>
         <EntityType Name="BookAuthor">
           <Key>
@@ -124,47 +138,9 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BookId" Type="Int32" Nullable="false" />
           <Property Name="AuthorId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Author" Relationship="Self.FK_BookAuthor_Author" FromRole="BookAuthor" ToRole="Author" />
-          <NavigationProperty Name="Book" Relationship="Self.FK_BookAuthor_Book" FromRole="BookAuthor" ToRole="Book" />
+          <NavigationProperty Name="Author" Relationship="Ivanushkin.Denis.BookmasterModel.FK_BookAuthor_Author" FromRole="BookAuthor" ToRole="Author" />
+          <NavigationProperty Name="Book" Relationship="Ivanushkin.Denis.BookmasterModel.FK_BookAuthor_Book" FromRole="BookAuthor" ToRole="Book" />
         </EntityType>
-        <Association Name="FK_BookAuthor_Author">
-          <End Role="Author" Type="Self.Author" Multiplicity="1" />
-          <End Role="BookAuthor" Type="Self.BookAuthor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Author">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="BookAuthor">
-              <PropertyRef Name="AuthorId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BookAuthor_Book">
-          <End Role="Book" Type="Self.Book" Multiplicity="1" />
-          <End Role="BookAuthor" Type="Self.BookAuthor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Book">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="BookAuthor">
-              <PropertyRef Name="BookId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="BookMasterEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Author" EntityType="Self.Author" />
-          <EntitySet Name="Book" EntityType="Self.Book" />
-          <EntitySet Name="BookAuthor" EntityType="Self.BookAuthor" />
-          <AssociationSet Name="FK_BookAuthor_Author" Association="Self.FK_BookAuthor_Author">
-            <End Role="Author" EntitySet="Author" />
-            <End Role="BookAuthor" EntitySet="BookAuthor" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BookAuthor_Book" Association="Self.FK_BookAuthor_Book">
-            <End Role="Book" EntitySet="Book" />
-            <End Role="BookAuthor" EntitySet="BookAuthor" />
-          </AssociationSet>
-          <EntitySet Name="Customer" EntityType="Ivanushkin.Denis.BookmasterModel.Customer" />
-        </EntityContainer>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="Id" />
@@ -177,6 +153,30 @@
           <Property Name="Phone" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
         </EntityType>
+        <Association Name="FK_BookAuthor_Author">
+          <End Type="Ivanushkin.Denis.BookmasterModel.Author" Role="Author" Multiplicity="1" />
+          <End Type="Ivanushkin.Denis.BookmasterModel.BookAuthor" Role="BookAuthor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BookAuthor">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookAuthor_Book">
+          <End Type="Ivanushkin.Denis.BookmasterModel.Book" Role="Book" Multiplicity="1" />
+          <End Type="Ivanushkin.Denis.BookmasterModel.BookAuthor" Role="BookAuthor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BookAuthor">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -186,35 +186,35 @@
           <EntitySetMapping Name="Author">
             <EntityTypeMapping TypeName="Ivanushkin.Denis.BookmasterModel.Author">
               <MappingFragment StoreEntitySet="Author">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
-                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
-                <ScalarProperty Name="Middlename" ColumnName="Middlename" />
-                <ScalarProperty Name="Bio" ColumnName="Bio" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="DeathDate" ColumnName="DeathDate" />
                 <ScalarProperty Name="Wikipedia" ColumnName="Wikipedia" />
+                <ScalarProperty Name="DeathDate" ColumnName="DeathDate" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Bio" ColumnName="Bio" />
+                <ScalarProperty Name="Middlename" ColumnName="Middlename" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Book">
             <EntityTypeMapping TypeName="Ivanushkin.Denis.BookmasterModel.Book">
               <MappingFragment StoreEntitySet="Book">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Subtitle" ColumnName="Subtitle" />
-                <ScalarProperty Name="FirstPublishDate" ColumnName="FirstPublishDate" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Cover" ColumnName="Cover" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FirstPublishDate" ColumnName="FirstPublishDate" />
+                <ScalarProperty Name="Subtitle" ColumnName="Subtitle" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BookAuthor">
             <EntityTypeMapping TypeName="Ivanushkin.Denis.BookmasterModel.BookAuthor">
               <MappingFragment StoreEntitySet="BookAuthor">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="BookId" ColumnName="BookId" />
                 <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

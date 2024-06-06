@@ -26,12 +26,21 @@ namespace BookMaster.View.Windows
 
         private void CancelBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            DialogResult = false;
         }
 
         private void LoginBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            if (LoginTb.Text == "1" && PasswordPb.Password == "1")
+            {
+                DialogResult = true;
+                MessageBox.Show("Вы успешно вошли в систему", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                DialogResult = false;
+                MessageBox.Show("Пользователь не найден!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

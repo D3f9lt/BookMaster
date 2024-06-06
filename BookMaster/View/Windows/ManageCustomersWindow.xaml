@@ -88,15 +88,15 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID"
-                                    DisplayMemberBinding="{Binding Customer.ID}"/>
+                                    DisplayMemberBinding="{Binding Id, StringFormat=C{0}}"/>
                     <GridViewColumn Header="Name"
-                                    DisplayMemberBinding="{Binding Direction.Name}"/>
+                                    DisplayMemberBinding="{Binding Fullname}"/>
                     <GridViewColumn Header="Address"
-                                    DisplayMemberBinding="{Binding Customer.Address}"/>
+                                    DisplayMemberBinding="{Binding Adress}"/>
                     <GridViewColumn Header="Zip"
-                                    DisplayMemberBinding="{Binding Customer.Zip}"/>
+                                    DisplayMemberBinding="{Binding ZipCode}"/>
                     <GridViewColumn Header="City"
-                                    DisplayMemberBinding="{Binding Customer.City}"/>
+                                    DisplayMemberBinding="{Binding City}"/>
                 </GridView>
             </ListView.View>
         </ListView>

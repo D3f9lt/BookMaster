@@ -20,7 +20,6 @@ namespace BookMaster.View.Windows
     /// </summary>
     public partial class ManageCustomers : Window
     {
-        List<Customer> customer = App.context.Customer.ToList();
         public ManageCustomers()
         {
             InitializeComponent();
@@ -63,9 +62,14 @@ namespace BookMaster.View.Windows
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            AddEditCustomerWindow addEditCustomerWindow = new AddEditCustomerWindow(ManageCustomersLv.SelectedItem as Customer);
+            if (addEditCustomerWindow.ShowDialog() == true)
+            {
+                // Обновление списка
+                ManageCustomersLv.ItemsSource = App.context.Customer.ToList();
+            }
         }
     }
 }
-    }
-}
+    
+
