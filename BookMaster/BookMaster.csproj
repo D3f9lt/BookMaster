@@ -90,6 +90,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BookMasterModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\Customer.cs">
+      <DependentUpon>BookMasterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\AddEditCustomerWindow.xaml.cs">
+      <DependentUpon>AddEditCustomerWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\BookAuthorsDetailsWindow.xaml.cs">
       <DependentUpon>BookAuthorsDetailsWindow.xaml</DependentUpon>
     </Compile>
@@ -160,6 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\TextBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\AddEditCustomerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

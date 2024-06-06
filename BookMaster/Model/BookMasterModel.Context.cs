@@ -28,5 +28,6 @@ namespace BookMaster.Model
         public DbSet<Author> Author { get; set; }
         public DbSet<Book> Book { get; set; }
         public DbSet<BookAuthor> BookAuthor { get; set; }
+        public DbSet<Customer> Customer { get; set; }
     }
 }

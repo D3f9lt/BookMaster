@@ -5,8 +5,100 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookMaster.View.Windows"
         mc:Ignorable="d"
-        Title="ManageCustomers" Height="450" Width="800">
+        Title="ManageCustomers" MinHeight="720" MinWidth="1280"
+        Height="900" Width="1600"
+        WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
+
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="1" Grid.Column="1"
+                   Text="Customer ID"
+                   Grid.ColumnSpan="3"
+                   FontSize="20"
+                   Margin="15"/>
+
+        <TextBox Grid.Row="2" Grid.Column="1"
+                 Grid.ColumnSpan="3"
+                 FontSize="20"
+                 Margin="15"/>
+
+        <TextBlock Grid.Row="4" Grid.Column="1"
+                   Text="Name" 
+                   FontSize="20"
+                   Margin="15"/>
+
+        <TextBox Grid.Row="5" Grid.Column="1"
+                 Grid.ColumnSpan="3"
+                 Margin="15"
+                 FontSize="20"/>
+
+        <Button Name ="Search"
+                    Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="3" 
+                    Margin="15">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="\Resources\Icons\search.png"
+                        Stretch="Uniform" Width="16" Height="16" Margin="5" />
+                    <TextBlock Text="Search" VerticalAlignment="Center" />
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button Name="EditBtn" Grid.Row="9" Grid.Column="1"
+                Margin="20"
+                Content="Edit..."
+                FontSize="20"
+                Click="EditBtn_Click">
+        </Button>
+
+        <Button Name="AddBtn" Grid.Row="9" Grid.Column="3"
+                Margin="20"
+                Content="Add..."
+                FontSize="20"
+                Click="AddBtn_Click">
+        </Button>
+
+
+        <ListView Name="ManageCustomersLv" 
+                  SelectionChanged="ManageCustomersLv_SelectionChanged"
+                  Grid.Row="0" Grid.Column="5" Grid.RowSpan="10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID"
+                                    DisplayMemberBinding="{Binding Customer.ID}"/>
+                    <GridViewColumn Header="Name"
+                                    DisplayMemberBinding="{Binding Direction.Name}"/>
+                    <GridViewColumn Header="Address"
+                                    DisplayMemberBinding="{Binding Customer.Address}"/>
+                    <GridViewColumn Header="Zip"
+                                    DisplayMemberBinding="{Binding Customer.Zip}"/>
+                    <GridViewColumn Header="City"
+                                    DisplayMemberBinding="{Binding Customer.City}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>
